@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { MenuLateral } from './src/navigator/MenuLateral';
+import { AuthProvider } from './src/context/AuthContext';
 
 // import { Tabs } from './src/navigator/Tabs';
 // import { StackNavigator } from './src/navigator/StackNavigator';
@@ -9,10 +10,20 @@ import { MenuLateral } from './src/navigator/MenuLateral';
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <StackNavigator /> */}
-      {/* <MenuLateralBasico /> */}
-      <MenuLateral />
+      <AppState>
+        {/* <StackNavigator /> */}
+        {/* <MenuLateralBasico /> */}
+        <MenuLateral />
+      </AppState>
     </NavigationContainer>
+  );
+};
+
+const AppState = ({ children }: any) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
   );
 };
 
